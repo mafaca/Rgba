@@ -42,10 +42,10 @@ namespace Rgb
 			{
 				for (int j = 0; j < height; j++)
 				{
-					output[oo + 0] = (byte)(input[io + 0] << 4);	// b
-					output[oo + 1] = (byte)(input[io + 0] & 0xF0);	// g	
-					output[oo + 2] = (byte)(input[io + 1] << 4);	// r
-					output[oo + 3] = (byte)(input[io + 1] & 0xF0);	// a
+					output[oo + 0] = unchecked((byte)(input[io + 0] << 4));	// b
+					output[oo + 1] = (byte)(input[io + 0] & 0xF0);			// g	
+					output[oo + 2] = unchecked((byte)(input[io + 1] << 4));	// r
+					output[oo + 3] = (byte)(input[io + 1] & 0xF0);			// a
 					io += 2;
 					oo += 4;
 				}
@@ -143,8 +143,8 @@ namespace Rgb
 				for (int j = 0; j < height; j++)
 				{
 					byte r = (byte)(input[io + 1] & 0xF8);
-					byte g = (byte)(((input[io + 1] & 7) << 5) | ((input[io + 0] & 0xE0) >> 3));
-					byte b = (byte)(input[io + 0] << 3);
+					byte g = unchecked((byte)((input[io + 1] << 5) | ((input[io + 0] & 0xE0) >> 3)));
+					byte b = unchecked((byte)(input[io + 0] << 3));
 					output[oo + 0] = b;		// b
 					output[oo + 1] = g;		// g
 					output[oo + 2] = r;		// r
@@ -195,10 +195,10 @@ namespace Rgb
 			{
 				for (int j = 0; j < height; j++)
 				{
-					output[oo + 0] = (byte)(input[io + 0] & 0xF0);	// b
-					output[oo + 1] = (byte)(input[io + 1] << 4);	// g	
-					output[oo + 2] = (byte)(input[io + 1] & 0xF0);	// r
-					output[oo + 3] = (byte)(input[io + 0] << 4);	// a
+					output[oo + 0] = (byte)(input[io + 0] & 0xF0);			// b
+					output[oo + 1] = unchecked((byte)(input[io + 1] << 4));	// g	
+					output[oo + 2] = (byte)(input[io + 1] & 0xF0);			// r
+					output[oo + 3] = unchecked((byte)(input[io + 0] << 4));	// a
 					io += 2;
 					oo += 4;
 				}
