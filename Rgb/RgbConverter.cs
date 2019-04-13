@@ -9,20 +9,29 @@ namespace Rgb
 			return output;
 		}
 
-		public static void A8ToBGRA32(byte[] input, int width, int height, byte[] output)
+		public unsafe static void A8ToBGRA32(byte[] input, int width, int height, byte[] output)
 		{
-			int io = 0;
-			int oo = 0;
+			fixed (byte* inputPtr = input)
+			{
+				fixed (byte* outputPtr = output)
+				{
+					A8ToBGRA32(inputPtr, width, height, outputPtr);
+				}
+			}
+		}
+
+		public unsafe static void A8ToBGRA32(byte* input, int width, int height, byte* output)
+		{
 			for (int i = 0; i < width; i++)
 			{
 				for (int j = 0; j < height; j++)
 				{
-					output[oo + 0] = 0;			// b
-					output[oo + 1] = 0;			// g
-					output[oo + 2] = 0;			// r
-					output[oo + 3] = input[io]; // a
-					oo += 4;
-					io++;
+					output[0] = 0;		// b
+					output[1] = 0;		// g
+					output[2] = 0;		// r
+					output[3] = *input;	// a
+					output += 4;
+					input++;
 				}
 			}
 		}
@@ -34,20 +43,29 @@ namespace Rgb
 			return output;
 		}
 
-		public static void ARGB16ToBGRA32(byte[] input, int width, int height, byte[] output)
+		public unsafe static void ARGB16ToBGRA32(byte[] input, int width, int height, byte[] output)
 		{
-			int io = 0;
-			int oo = 0;
+			fixed (byte* inputPtr = input)
+			{
+				fixed (byte* outputPtr = output)
+				{
+					ARGB16ToBGRA32(inputPtr, width, height, outputPtr);
+				}
+			}
+		}
+
+		public unsafe static void ARGB16ToBGRA32(byte* input, int width, int height, byte* output)
+		{
 			for (int i = 0; i < width; i++)
 			{
 				for (int j = 0; j < height; j++)
 				{
-					output[oo + 0] = (byte)(input[io + 0] << 4);	// b
-					output[oo + 1] = (byte)(input[io + 0] & 0xF0);	// g	
-					output[oo + 2] = (byte)(input[io + 1] << 4);	// r
-					output[oo + 3] = (byte)(input[io + 1] & 0xF0);	// a
-					io += 2;
-					oo += 4;
+					output[0] = (byte)(input[0] << 4);		// b
+					output[1] = (byte)(input[0] & 0xF0);	// g	
+					output[2] = (byte)(input[1] << 4);		// r
+					output[3] = (byte)(input[1] & 0xF0);	// a
+					input += 2;
+					output += 4;
 				}
 			}
 		}
@@ -59,20 +77,29 @@ namespace Rgb
 			return output;
 		}
 
-		public static void RGB24ToBGRA32(byte[] input, int width, int height, byte[] output)
+		public unsafe static void RGB24ToBGRA32(byte[] input, int width, int height, byte[] output)
 		{
-			int io = 0;
-			int oo = 0;
+			fixed (byte* inputPtr = input)
+			{
+				fixed (byte* outputPtr = output)
+				{
+					RGB24ToBGRA32(inputPtr, width, height, outputPtr);
+				}
+			}
+		}
+
+		public unsafe static void RGB24ToBGRA32(byte* input, int width, int height, byte* output)
+		{
 			for (int i = 0; i < width; i++)
 			{
 				for (int j = 0; j < height; j++)
 				{
-					output[oo + 0] = input[io + 2];	// b
-					output[oo + 1] = input[io + 1];	// g
-					output[oo + 2] = input[io + 0];	// r
-					output[oo + 3] = 255;           // a
-					io += 3;
-					oo += 4;
+					output[0] = input[2];	// b
+					output[1] = input[1];	// g
+					output[2] = input[0];	// r
+					output[3] = 255;		// a
+					input += 3;
+					output += 4;
 				}
 			}
 		}
@@ -84,20 +111,29 @@ namespace Rgb
 			return output;
 		}
 
-		public static void RGBA32ToBGRA32(byte[] input, int width, int height, byte[] output)
+		public unsafe static void RGBA32ToBGRA32(byte[] input, int width, int height, byte[] output)
 		{
-			int io = 0;
-			int oo = 0;
+			fixed (byte* inputPtr = input)
+			{
+				fixed (byte* outputPtr = output)
+				{
+					RGBA32ToBGRA32(inputPtr, width, height, outputPtr);
+				}
+			}
+		}
+
+		public unsafe static void RGBA32ToBGRA32(byte* input, int width, int height, byte* output)
+		{
 			for (int i = 0; i < width; i++)
 			{
 				for (int j = 0; j < height; j++)
 				{
-					output[oo + 0] = input[io + 2]; // b
-					output[oo + 1] = input[io + 1]; // g
-					output[oo + 2] = input[io + 0]; // r
-					output[oo + 3] = input[io + 3]; // a
-					io += 4;
-					oo += 4;
+					output[0] = input[2]; // b
+					output[1] = input[1]; // g
+					output[2] = input[0]; // r
+					output[3] = input[3]; // a
+					input += 4;
+					output += 4;
 				}
 			}
 		}
@@ -109,20 +145,29 @@ namespace Rgb
 			return output;
 		}
 
-		public static void ARGB32ToBGRA32(byte[] input, int width, int height, byte[] output)
+		public unsafe static void ARGB32ToBGRA32(byte[] input, int width, int height, byte[] output)
 		{
-			int io = 0;
-			int oo = 0;
+			fixed (byte* inputPtr = input)
+			{
+				fixed (byte* outputPtr = output)
+				{
+					ARGB32ToBGRA32(inputPtr, width, height, outputPtr);
+				}
+			}
+		}
+
+		public unsafe static void ARGB32ToBGRA32(byte* input, int width, int height, byte* output)
+		{
 			for (int i = 0; i < width; i++)
 			{
 				for (int j = 0; j < height; j++)
 				{
-					output[oo + 0] = input[io + 3]; // b
-					output[oo + 1] = input[io + 2]; // g
-					output[oo + 2] = input[io + 1]; // r
-					output[oo + 3] = input[io + 0]; // a
-					io += 4;
-					oo += 4;
+					output[0] = input[3]; // b
+					output[1] = input[2]; // g
+					output[2] = input[1]; // r
+					output[3] = input[0]; // a
+					input += 4;
+					output += 4;
 				}
 			}
 		}
@@ -134,23 +179,32 @@ namespace Rgb
 			return output;
 		}
 
-		public static void RGB16ToBGRA32(byte[] input, int width, int height, byte[] output)
+		public unsafe static void RGB16ToBGRA32(byte[] input, int width, int height, byte[] output)
 		{
-			int io = 0;
-			int oo = 0;
+			fixed (byte* inputPtr = input)
+			{
+				fixed (byte* outputPtr = output)
+				{
+					RGB16ToBGRA32(inputPtr, width, height, outputPtr);
+				}
+			}
+		}
+
+		public unsafe static void RGB16ToBGRA32(byte* input, int width, int height, byte* output)
+		{
 			for (int i = 0; i < width; i++)
 			{
 				for (int j = 0; j < height; j++)
 				{
-					byte r = (byte)(input[io + 1] & 0xF8);
-					byte g = (byte)(((input[io + 1] & 7) << 5) | ((input[io + 0] & 0xE0) >> 3));
-					byte b = (byte)(input[io + 0] << 3);
-					output[oo + 0] = b;		// b
-					output[oo + 1] = g;		// g
-					output[oo + 2] = r;		// r
-					output[oo + 3] = 255;   // a
-					io += 2;
-					oo += 4;
+					byte r = (byte)(input[1] & 0xF8);
+					byte g = (byte)(((input[1] & 7) << 5) | ((input[0] & 0xE0) >> 3));
+					byte b = (byte)(input[0] << 3);
+					output[0] = b;		// b
+					output[1] = g;		// g
+					output[2] = r;		// r
+					output[3] = 255;	// a
+					input += 2;
+					output += 4;
 				}
 			}
 		}
@@ -162,20 +216,29 @@ namespace Rgb
 			return output;
 		}
 
-		public static void R16ToBGRA32(byte[] input, int width, int height, byte[] output)
+		public unsafe static void R16ToBGRA32(byte[] input, int width, int height, byte[] output)
 		{
-			int io = 0;
-			int oo = 0;
+			fixed (byte* inputPtr = input)
+			{
+				fixed (byte* outputPtr = output)
+				{
+					R16ToBGRA32(inputPtr, width, height, outputPtr);
+				}
+			}
+		}
+
+		public unsafe static void R16ToBGRA32(byte* input, int width, int height, byte* output)
+		{
 			for (int i = 0; i < width; i++)
 			{
 				for (int j = 0; j < height; j++)
 				{
-					output[oo + 0] = 0;				// b
-					output[oo + 1] = 0;				// g
-					output[oo + 2] = input[io + 1]; // r
-					output[oo + 3] = 255;			// a
-					io += 2;
-					oo += 4;
+					output[0] = 0;			// b
+					output[1] = 0;			// g
+					output[2] = input[1];	// r
+					output[3] = 255;		// a
+					input += 2;
+					output += 4;
 				}
 			}
 		}
@@ -187,20 +250,29 @@ namespace Rgb
 			return output;
 		}
 
-		public static void RGBA16ToBGRA32(byte[] input, int width, int height, byte[] output)
+		public unsafe static void RGBA16ToBGRA32(byte[] input, int width, int height, byte[] output)
 		{
-			int io = 0;
-			int oo = 0;
+			fixed (byte* inputPtr = input)
+			{
+				fixed (byte* outputPtr = output)
+				{
+					RGBA16ToBGRA32(inputPtr, width, height, outputPtr);
+				}
+			}
+		}
+
+		public unsafe static void RGBA16ToBGRA32(byte* input, int width, int height, byte* output)
+		{
 			for (int i = 0; i < width; i++)
 			{
 				for (int j = 0; j < height; j++)
 				{
-					output[oo + 0] = (byte)(input[io + 0] & 0xF0);	// b
-					output[oo + 1] = (byte)(input[io + 1] << 4);	// g	
-					output[oo + 2] = (byte)(input[io + 1] & 0xF0);	// r
-					output[oo + 3] = (byte)(input[io + 0] << 4);	// a
-					io += 2;
-					oo += 4;
+					output[0] = (byte)(input[0] & 0xF0);	// b
+					output[1] = (byte)(input[1] << 4);		// g	
+					output[2] = (byte)(input[1] & 0xF0);	// r
+					output[3] = (byte)(input[0] << 4);		// a
+					input += 2;
+					output += 4;
 				}
 			}
 		}
@@ -212,20 +284,29 @@ namespace Rgb
 			return output;
 		}
 
-		public static void RG16ToBGRA32(byte[] input, int width, int height, byte[] output)
+		public unsafe static void RG16ToBGRA32(byte[] input, int width, int height, byte[] output)
 		{
-			int io = 0;
-			int oo = 0;
+			fixed (byte* inputPtr = input)
+			{
+				fixed (byte* outputPtr = output)
+				{
+					RG16ToBGRA32(inputPtr, width, height, outputPtr);
+				}
+			}
+		}
+
+		public unsafe static void RG16ToBGRA32(byte* input, int width, int height, byte* output)
+		{
 			for (int i = 0; i < width; i++)
 			{
 				for (int j = 0; j < height; j++)
 				{
-					output[oo + 0] = 0;				// b
-					output[oo + 1] = input[io + 1]; // g
-					output[oo + 2] = input[io + 0]; // r
-					output[oo + 3] = 255;			// a
-					io += 2;
-					oo += 4;
+					output[0] = 0;			// b
+					output[1] = input[1];	// g
+					output[2] = input[0];	// r
+					output[3] = 255;		// a
+					input += 2;
+					output += 4;
 				}
 			}
 		}
@@ -237,20 +318,29 @@ namespace Rgb
 			return output;
 		}
 
-		public static void R8ToBGRA32(byte[] input, int width, int height, byte[] output)
+		public unsafe static void R8ToBGRA32(byte[] input, int width, int height, byte[] output)
 		{
-			int io = 0;
-			int oo = 0;
+			fixed (byte* inputPtr = input)
+			{
+				fixed (byte* outputPtr = output)
+				{
+					R8ToBGRA32(inputPtr, width, height, outputPtr);
+				}
+			}
+		}
+
+		public unsafe static void R8ToBGRA32(byte* input, int width, int height, byte* output)
+		{
 			for (int i = 0; i < width; i++)
 			{
 				for (int j = 0; j < height; j++)
 				{
-					output[oo + 0] = 0;             // b
-					output[oo + 1] = 0;				// g
-					output[oo + 2] = input[io + 0]; // r
-					output[oo + 3] = 255;           // a
-					io += 1;
-					oo += 4;
+					output[0] = 0;			// b
+					output[1] = 0;			// g
+					output[2] = input[0];	// r
+					output[3] = 255;		// a
+					input += 1;
+					output += 4;
 				}
 			}
 		}
