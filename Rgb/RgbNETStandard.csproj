@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.0</TargetFramework>
-    <LangVersion>7.0</LangVersion>
+    <LangVersion>default</LangVersion>
 	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	<AssemblyName>Rgb</AssemblyName>
 	<RootNamespace>Rgb</RootNamespace>
