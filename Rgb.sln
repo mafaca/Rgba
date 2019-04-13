@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rgb", "Rgb\Rgb.csproj", "{5709C43C-9ADB-40C1-8F68-88016053188A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RgbTest", "RgbTest\RgbTest.csproj", "{20C56D92-6E48-4152-9A98-B876A063AABC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RgbNETStandard", "Rgb\RgbNETStandard.csproj", "{B5F6C9D7-EC25-46D7-B1E5-4B42533AF1CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5709C43C-9ADB-40C1-8F68-88016053188A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5709C43C-9ADB-40C1-8F68-88016053188A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5709C43C-9ADB-40C1-8F68-88016053188A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5709C43C-9ADB-40C1-8F68-88016053188A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20C56D92-6E48-4152-9A98-B876A063AABC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20C56D92-6E48-4152-9A98-B876A063AABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20C56D92-6E48-4152-9A98-B876A063AABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20C56D92-6E48-4152-9A98-B876A063AABC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5F6C9D7-EC25-46D7-B1E5-4B42533AF1CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5F6C9D7-EC25-46D7-B1E5-4B42533AF1CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5F6C9D7-EC25-46D7-B1E5-4B42533AF1CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5F6C9D7-EC25-46D7-B1E5-4B42533AF1CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {57CEE9CA-00F8-42BD-822B-CB47DF4F354C}
+	EndGlobalSection
+EndGlobal
