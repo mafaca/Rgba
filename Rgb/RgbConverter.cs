@@ -1,6 +1,8 @@
+using System;
+
 namespace Rgb
 {
-    public static class RgbConverter
+	public static class RgbConverter
 	{
 		public static byte[] A8ToBGRA32(byte[] input, int width, int height)
 		{
@@ -250,6 +252,200 @@ namespace Rgb
 					output[oo + 2] = input[io + 0]; // r
 					output[oo + 3] = 255;           // a
 					io += 1;
+					oo += 4;
+				}
+			}
+		}
+
+		public static byte[] RHalfToBGRA32(byte[] input, int width, int height)
+		{
+			byte[] output = new byte[width * height * 4];
+			RHalfToBGRA32(input, width, height, output);
+			return output;
+		}
+
+		public static void RHalfToBGRA32(byte[] input, int width, int height, byte[] output)
+		{
+			int io = 0;
+			int oo = 0;
+			for (int i = 0; i < width; i++)
+			{
+				for (int j = 0; j < height; j++)
+				{
+					byte r = Convert.ToByte(Math.Round(Half.ToHalf(input, io) * 255f));
+					output[oo + 0] = 0;             // b
+					output[oo + 1] = 0;             // g
+					output[oo + 2] = r;				// r
+					output[oo + 3] = 255;           // a
+					io += 2;
+					oo += 4;
+				}
+			}
+		}
+
+		public static byte[] RGHalfToBGRA32(byte[] input, int width, int height)
+		{
+			byte[] output = new byte[width * height * 4];
+			RGHalfToBGRA32(input, width, height, output);
+			return output;
+		}
+
+		public static void RGHalfToBGRA32(byte[] input, int width, int height, byte[] output)
+		{
+			int io = 0;
+			int oo = 0;
+			for (int i = 0; i < width; i++)
+			{
+				for (int j = 0; j < height; j++)
+				{
+					byte r = Convert.ToByte(Math.Round(Half.ToHalf(input, io + 0) * 255f));
+					byte g = Convert.ToByte(Math.Round(Half.ToHalf(input, io + 2) * 255f));
+					output[oo + 0] = 0;             // b
+					output[oo + 1] = g;             // g
+					output[oo + 2] = r;             // r
+					output[oo + 3] = 255;           // a
+					io += 4;
+					oo += 4;
+				}
+			}
+		}
+
+		public static byte[] RGBAHalfToBGRA32(byte[] input, int width, int height)
+		{
+			byte[] output = new byte[width * height * 4];
+			RGBAHalfToBGRA32(input, width, height, output);
+			return output;
+		}
+
+		public static void RGBAHalfToBGRA32(byte[] input, int width, int height, byte[] output)
+		{
+			int io = 0;
+			int oo = 0;
+			for (int i = 0; i < width; i++)
+			{
+				for (int j = 0; j < height; j++)
+				{
+					byte r = Convert.ToByte(Math.Round(Half.ToHalf(input, io + 0) * 255f));
+					byte g = Convert.ToByte(Math.Round(Half.ToHalf(input, io + 2) * 255f));
+					byte b = Convert.ToByte(Math.Round(Half.ToHalf(input, io + 4) * 255f));
+					byte a = Convert.ToByte(Math.Round(Half.ToHalf(input, io + 6) * 255f));
+					output[oo + 0] = b;             // b
+					output[oo + 1] = g;             // g
+					output[oo + 2] = r;             // r
+					output[oo + 3] = a;				// a
+					io += 8;
+					oo += 4;
+				}
+			}
+		}
+
+		public static byte[] RFloatToBGRA32(byte[] input, int width, int height)
+		{
+			byte[] output = new byte[width * height * 4];
+			RFloatToBGRA32(input, width, height, output);
+			return output;
+		}
+
+		public static void RFloatToBGRA32(byte[] input, int width, int height, byte[] output)
+		{
+			int io = 0;
+			int oo = 0;
+			for (int i = 0; i < width; i++)
+			{
+				for (int j = 0; j < height; j++)
+				{
+					byte r = Convert.ToByte(Math.Round(BitConverter.ToSingle(input, io) * 255f));
+					output[oo + 0] = 0;				// b
+					output[oo + 1] = 0;				// g
+					output[oo + 2] = r;				// r
+					output[oo + 3] = 255;			// a
+					io += 4;
+					oo += 4;
+				}
+			}
+		}
+
+		public static byte[] RGFloatToBGRA32(byte[] input, int width, int height)
+		{
+			byte[] output = new byte[width * height * 4];
+			RGFloatToBGRA32(input, width, height, output);
+			return output;
+		}
+
+		public static void RGFloatToBGRA32(byte[] input, int width, int height, byte[] output)
+		{
+			int io = 0;
+			int oo = 0;
+			for (int i = 0; i < width; i++)
+			{
+				for (int j = 0; j < height; j++)
+				{
+					byte r = Convert.ToByte(Math.Round(BitConverter.ToSingle(input, io + 0) * 255f));
+					byte g = Convert.ToByte(Math.Round(BitConverter.ToSingle(input, io + 4) * 255f));
+					output[oo + 0] = 0;             // b
+					output[oo + 1] = g;             // g
+					output[oo + 2] = r;             // r
+					output[oo + 3] = 255;           // a
+					io += 8;
+					oo += 4;
+				}
+			}
+		}
+
+		public static byte[] RGBAFloatToBGRA32(byte[] input, int width, int height)
+		{
+			byte[] output = new byte[width * height * 4];
+			RGBAFloatToBGRA32(input, width, height, output);
+			return output;
+		}
+
+		public static void RGBAFloatToBGRA32(byte[] input, int width, int height, byte[] output)
+		{
+			int io = 0;
+			int oo = 0;
+			for (int i = 0; i < width; i++)
+			{
+				for (int j = 0; j < height; j++)
+				{
+					byte r = Convert.ToByte(Math.Round(BitConverter.ToSingle(input, io + 0) * 255f));
+					byte g = Convert.ToByte(Math.Round(BitConverter.ToSingle(input, io + 4) * 255f));
+					byte b = Convert.ToByte(Math.Round(BitConverter.ToSingle(input, io + 8) * 255f));
+					byte a = Convert.ToByte(Math.Round(BitConverter.ToSingle(input, io + 12) * 255f));
+					output[oo + 0] = b;				// b
+					output[oo + 1] = g;				// g
+					output[oo + 2] = r;				// r
+					output[oo + 3] = a;				// a
+					io += 16;
+					oo += 4;
+				}
+			}
+		}
+
+		public static byte[] RGB9e5FloatToBGRA32(byte[] input, int width, int height)
+		{
+			byte[] output = new byte[width * height * 4];
+			RGB9e5FloatToBGRA32(input, width, height, output);
+			return output;
+		}
+
+		public static void RGB9e5FloatToBGRA32(byte[] input, int width, int height, byte[] output)
+		{
+			int io = 0;
+			int oo = 0;
+			for (int i = 0; i < width; i++)
+			{
+				for (int j = 0; j < height; j++)
+				{
+					uint value = BitConverter.ToUInt32(input, io);
+					double scale = Math.Pow(2, unchecked((int)(value >> 27) - 24));
+					byte r = Convert.ToByte(Math.Round((value >> 0 & 0x1FF) * scale * 255.0));
+					byte g = Convert.ToByte(Math.Round((value >> 9 & 0x1FF) * scale * 255.0));
+					byte b = Convert.ToByte(Math.Round((value >> 18 & 0x1FF) * scale * 255.0));
+					output[oo + 0] = b;             // b
+					output[oo + 1] = g;             // g
+					output[oo + 2] = r;             // r
+					output[oo + 3] = 255;           // a
+					io += 4;
 					oo += 4;
 				}
 			}

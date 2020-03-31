@@ -12,8 +12,8 @@ namespace RgbTest
 		{
 			if (args.Length < 4)
 			{
-				Console.WriteLine("Format: {fileName} {width} {height} {mode}");
-				Console.WriteLine("mode:");
+				Console.WriteLine("Format: {fileName} {width} {height} {format}");
+				Console.WriteLine("format:");
 				Console.WriteLine("0 - Alpha8");
 				Console.WriteLine("1 - Argb4444");
 				Console.WriteLine("2 - Rgb24");
@@ -25,6 +25,13 @@ namespace RgbTest
 				Console.WriteLine("8 - Bgra32");
 				Console.WriteLine("9 - Rg16");
 				Console.WriteLine("10 - R8");
+				Console.WriteLine("11 - RHalf");
+				Console.WriteLine("12 - RGHalf");
+				Console.WriteLine("13 - RGBAHalf");
+				Console.WriteLine("14 - RFloat");
+				Console.WriteLine("15 - RGFloat");
+				Console.WriteLine("16 - RGBAFloat");
+				Console.WriteLine("17 - RGB9e5Float");
 				Console.ReadKey();
 				return;
 			}
@@ -32,7 +39,7 @@ namespace RgbTest
 			string path = args[0];
 			int width = int.Parse(args[1]);
 			int height = int.Parse(args[2]);
-			int mode = int.Parse(args[3]);
+			int format = int.Parse(args[3]);
 
 			using (DirectBitmap bitmap = new DirectBitmap(width, height))
 			{
@@ -43,7 +50,7 @@ namespace RgbTest
 					stopwatch.Start();
 					for (int j = 0; j < 5; j++)
 					{
-						switch (mode)
+						switch (format)
 						{
 							case 0:
 								RgbConverter.A8ToBGRA32(data, width, height, bitmap.Bits);
@@ -78,9 +85,30 @@ namespace RgbTest
 							case 10:
 								RgbConverter.R8ToBGRA32(data, width, height, bitmap.Bits);
 								break;
+							case 11:
+								RgbConverter.RHalfToBGRA32(data, width, height, bitmap.Bits);
+								break;
+							case 12:
+								RgbConverter.RGHalfToBGRA32(data, width, height, bitmap.Bits);
+								break;
+							case 13:
+								RgbConverter.RGBAHalfToBGRA32(data, width, height, bitmap.Bits);
+								break;
+							case 14:
+								RgbConverter.RFloatToBGRA32(data, width, height, bitmap.Bits);
+								break;
+							case 15:
+								RgbConverter.RGFloatToBGRA32(data, width, height, bitmap.Bits);
+								break;
+							case 16:
+								RgbConverter.RGBAFloatToBGRA32(data, width, height, bitmap.Bits);
+								break;
+							case 17:
+								RgbConverter.RGB9e5FloatToBGRA32(data, width, height, bitmap.Bits);
+								break;
 
 							default:
-								throw new Exception(mode.ToString());
+								throw new Exception(format.ToString());
 						}
 					}
 					stopwatch.Stop();
